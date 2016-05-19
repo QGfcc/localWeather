@@ -1,0 +1,17 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 19-mai-2016, 15:06:32
+    Author     : queni
+*/
+body {
+  background-color: lightblue; }
+  body #weatherThumbnail {
+    margin-top: 50px; }
+  body #weatherInfo {
+    padding: 40px; }
+
+/*# sourceMappingURL=localWeather.css.map */
