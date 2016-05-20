@@ -24,16 +24,34 @@ and open the template in the editor.
             <div class="row" id="weatherThumbnail">
                 <div class="col-xs-12 col-sm-6 col-md-4 col-md-offset-2" id="weatherIcon">
                     <img src="http://images.clipartpanda.com/sunny-weather-clipart-sunny-weather-ed-md.png">
+                    <br>
+                    <br>
+                    <a class="btn btn-default" id="refreshBtn">Refresh</a>
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-4" id="weatherInfo">
+                    <!--<img src="http://openweathermap.org/img/w/10d.png>"></img>-->
                     <ul>
-                        <li id="location">
+                        <li >
+                            <h1>Location</h1>
+                            <p id="location"></p>
+                            <!--<h4 id="location"></h4>-->
                             
                         </li>
-                        <li id="temperature">
+                        <!--<li id="temperature">-->
+                        <li>
+                            <h1>Temperature</h1>
+                            <!--<a >-->
+                                <p id="temperature"></p>
+                            <!--</a>-->    
+                        </li>
+                        <li >
+                            <h1>Sky</h1>
+                            <p id="sky"></p>
                             
                         </li>
-                        <li id="sky">
+                        <li >
+                            <h1>Stats</h1>
+                            <p id="stat"></p>
                             
                         </li>
                     </ul>
