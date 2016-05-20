@@ -13,5 +13,13 @@ body {
     margin-top: 50px; }
   body #weatherInfo {
     padding: 40px; }
+  body #weatherImg {
+    /*max-width: 360px;*/
+    max-width: 100%;
+    max-height: 200px;
+    /*margin: 80px 0;*/ }
+  @media screen and (min-width: 768px) {
+    body #weatherImg {
+      margin: 80px 0; } }
 
 /*# sourceMappingURL=localWeather.css.map */

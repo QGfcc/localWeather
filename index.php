@@ -12,6 +12,7 @@ and open the template in the editor.
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <link href="css/localWeather.css" rel="stylesheet" type="text/css"/>
+        <script src="js/weatherIconList.js" type="text/javascript"></script>
         <script src="js/localWeather.js" type="text/javascript"></script>
         <title>Local Weather</title>
     </head>
@@ -22,8 +23,9 @@ and open the template in the editor.
         <div class="container">
             <h1 class="text-center"> Your Local Weather </h1>
             <div class="row" id="weatherThumbnail">
-                <div class="col-xs-12 col-sm-6 col-md-4 col-md-offset-2" id="weatherIcon">
-                    <img src="http://images.clipartpanda.com/sunny-weather-clipart-sunny-weather-ed-md.png">
+                <div class="col-xs-12 col-sm-6 col-md-4 col-md-offset-2" id="weatherDisplay">
+                    <!--<img id="weatherImg" class="img-responsive" src="">-->
+                    <img id="weatherImg" class="" src="">
                     <br>
                     <br>
                     <a class="btn btn-default" id="refreshBtn">Refresh</a>
@@ -38,7 +40,7 @@ and open the template in the editor.
                             
                         </li>
                         <!--<li id="temperature">-->
-                        <li>
+                        <li id="temperatureLi">
                             <h1>Temperature</h1>
                             <!--<a >-->
                                 <p id="temperature"></p>
@@ -50,8 +52,8 @@ and open the template in the editor.
                             
                         </li>
                         <li >
-                            <h1>Stats</h1>
-                            <p id="stat"></p>
+                            <h1>Cloudiness</h1>
+                            <p id="cloudiness"></p>
                             
                         </li>
                     </ul>

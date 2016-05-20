@@ -15,4 +15,15 @@ body {
     #weatherInfo {
         padding:40px;
     }
+    #weatherImg {
+        /*max-width: 360px;*/
+        max-width: 100%;
+        max-height: 200px;
+        /*margin: 80px 0;*/
+    }
+    @media screen and (min-width: 768px){
+        #weatherImg {
+            margin: 80px 0;
+        }
+    }
 }
