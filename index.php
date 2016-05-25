@@ -26,13 +26,35 @@ and open the template in the editor.
                 <div class="col-xs-12 col-sm-6 col-md-4 col-md-offset-2" id="weatherDisplay">
                     <!--<img id="weatherImg" class="img-responsive" src="">-->
                     <img id="weatherImg" class="" src="">
-                    <br>
-                    <br>
-                    <a class="btn btn-default" id="refreshBtn">Refresh</a>
+<!--                    <br>
+                    <br>-->
+                    <!--<a class="btn btn-default" id="refreshBtn">Refresh</a>-->
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-4" id="weatherInfo">
                     <!--<img src="http://openweathermap.org/img/w/10d.png>"></img>-->
                     <ul>
+                        <!--<li >-->
+                            <!--<div class="btn-toolbar">-->
+                                <!--<div class="btn-group btn-group-justified">-->
+                                <div class="btn-group">
+                                    <!--<a class="btn btn-default" id="refreshBtn">Refresh</a>-->
+                                    <a class="btn btn-default" id="refreshBtn">
+                                    <img src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-refresh-128.png"
+                                         width="18px">
+                                    </a>
+<!--                                </div>
+                                <div class="btn-group btn-group-justified">
+                                <div class="btn-group pull-right">-->
+                                    <a class="btn btn-default" id="CBtn">
+                                        °C
+                                    </a>
+                                    <a class="btn btn-default" id="FBtn">
+                                        °F
+                                    </a>
+                                </div>
+                            <!--</div>-->
+                            
+                        <!--</li>-->
                         <li >
                             <h1>Location</h1>
                             <p id="location"></p>

@@ -39,3 +39,34 @@ var weatherIconList2={
     "8":weatherIconList["partly cloudy"],
     "9":weatherIconList["tornado"]
 };
+var weatherBackgroundLinksList={
+    "rain":"",
+//    "heavy rain":"http://cdn.patch.com/users/22857729/2015/07/T800x600/20150755a66924e777a.jpg",
+    "heavy rain":"http://newsfirst.lk/english/wp-content/uploads/2014/08/rain.jpg",
+    "light rain":"",
+    "sunny":"",
+    "snow":"http://s1.favim.com/orig/9/nature-photography-sky-snow-tree-Favim.com-170734.jpg",
+//    "snow":"http://cyrille.diwi.org/images/kritablog/SnowMountain/Step5_flakes.png",
+    "windy":"",
+    "partly cloudy":"http://aaj.tv/wp-content/uploads/2015/10/partly-cloudy.jpg",
+    "thunderstorm":"https://thisisengland.org.uk/wp-content/uploads/2015/08/thunderstorm.jpg",
+    "drizzle":"http://www.metoffice.gov.uk/media/image/d/n/light_rain.jpg",
+    "clear":"",
+//    "mist":"https://tracepattern.files.wordpress.com/2012/04/brisbane-mist-april-03.jpg",
+    "mist":"http://vignette1.wikia.nocookie.net/demigodshaven/images/f/f5/Mist.jpg/revision/latest?cb=20110102163040",
+    "tornado":"http://i.huffpost.com/gen/2176456/images/o-TORNADO-facebook.jpg"
+};
+var weatherBackgroundList={
+    "1":weatherBackgroundLinksList["thunderstorm"],
+    "2":weatherBackgroundLinksList["thunderstorm"],
+    "3":weatherBackgroundLinksList["drizzle"],
+//    "3":weatherBackgroundLinksList["light rain"],
+//    "4":weatherBackgroundLinksList[""],
+    "4":weatherBackgroundLinksList["heavy rain"],
+    "5":weatherBackgroundLinksList["heavy rain"],
+    "6":weatherBackgroundLinksList["snow"],
+    "7":weatherBackgroundLinksList["mist"],
+//    "8":weatherBackgroundLinksList["clear"],
+    "8":weatherBackgroundLinksList["partly cloudy"],
+    "9":weatherBackgroundLinksList["tornado"]
+};

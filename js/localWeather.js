@@ -84,9 +84,26 @@ var isFahrenheit = 0;
 //        tempObj=" °C";
 //    }
 //}
+function btnToggle(onOff,target){
+    if(onOff){
+        target.addClass("active");
+    } else {
+        target.removeClass("active");
+    }
+}
+function updateUnitBtn(){
+    if(isFahrenheit){
+        $("#FBtn").addClass("active");
+        $("#CBtn").removeClass("active");
+    } else {
+        $("#CBtn").addClass("active");
+        $("#FBtn").removeClass("active");
+    }
+}
 function updateTemperature(){
 //    $("#temperature").text(Math.floor(tempObj.currTemperature)+tempObj.unit);
     $("#temperature").text(tempObj.getTemp(isFahrenheit));
+    updateUnitBtn();
 }
 function swapUnit(){
     if(isFahrenheit){
@@ -95,6 +112,13 @@ function swapUnit(){
         isFahrenheit = 1;
     }
     updateTemperature();
+}
+function updateWeatherImg(weather){
+        $("#weatherImg").attr("src",weatherIconList2[weather]);
+        $("html").css("background-image","url("+weatherBackgroundList[weather]+")");
+//        $("body").css("background-image","url("+weatherBackgroundList[weather]+")");
+//        $("html").css("background","url("+weatherBackgroundList[weather]+") no-repeat center fixed");
+//        $("html").css("background","url("+weatherBackgroundList[weather]+") no-repeat center fixed");
 }
 function displayData (weather){
 //    tempObj.currTemperature = celsiusToFahrenheit(kelvinToCelsius(weather.main.temp));
@@ -122,33 +146,35 @@ function displayData (weather){
 //    updateWeatherImg(8);
 //    updateWeatherImg(9);
     $("#cloudiness").text(weather.clouds.all+"%");
+//    alert("trol");
+    btnToggle(0,$("#refreshBtn"));
 }
-var sampleId =1;
-var next = "weatherSample.php";
-function updateWeather(position){
-    if(sampleId){
-        sampleId =0;
-        next = "weatherSample.php";
-    } else {
-        sampleId = 1;
-        next = "weatherSample2.php";
-    }
-    $.post(
-//        "http://api.openweathermap.org/data/2.5/weather",
-//        "http://api.openweathermap.org/data/2.5/weather?",
-//        "http://api.openweathermap.org/data/2.5/weather?lat=35&lon=139",
-        next,
-        {
-            "APPID":"b3f75a3057c526ca2b05ff4ad9d99873",
-            "lat":position.coords.latitude,
-            "lon":position.coords.longitude
-        },
-        function(data, status){
-            var dataJson = JSON.parse(data);
-            displayData(dataJson);
-        }
-    );    
-}
+//var sampleId =1;
+//var next = "weatherSample.php";
+//function updateWeather(position){
+//    if(sampleId){
+//        sampleId =0;
+//        next = "weatherSample.php";
+//    } else {
+//        sampleId = 1;
+//        next = "weatherSample2.php";
+//    }
+//    $.post(
+////        "http://api.openweathermap.org/data/2.5/weather",
+////        "http://api.openweathermap.org/data/2.5/weather?",
+////        "http://api.openweathermap.org/data/2.5/weather?lat=35&lon=139",
+//        next,
+//        {
+//            "APPID":"b3f75a3057c526ca2b05ff4ad9d99873",
+//            "lat":position.coords.latitude,
+//            "lon":position.coords.longitude
+//        },
+//        function(data, status){
+//            var dataJson = JSON.parse(data);
+//            displayData(dataJson);
+//        }
+//    );    
+//}
 function updateWeatherJSONP(position){
     $.ajax({
 //      url: "http://api.openweathermap.org/data/2.5/weather?lat=35&lon=139",
@@ -157,7 +183,20 @@ function updateWeatherJSONP(position){
       +"&lon="+position.coords.longitude
       +"&APPID=b3f75a3057c526ca2b05ff4ad9d99873",
       dataType: 'jsonp',
-      success: displayData
+      success: displayData,
+      error:function(){}
+    });
+}
+function updateWeatherJSONPFromIP(position){
+    $.ajax({
+//      url: "http://api.openweathermap.org/data/2.5/weather?lat=35&lon=139",
+      url: "http://api.openweathermap.org/data/2.5/weather?"
+      +"lat="+position.lat
+      +"&lon="+position.lon
+      +"&APPID=b3f75a3057c526ca2b05ff4ad9d99873",
+      dataType: 'jsonp',
+      success: displayData,
+      error:function(){}
     });
 }
 function showError(error) {
@@ -177,36 +216,59 @@ function showError(error) {
     }
 }
 function getLocation() {
-    if (navigator.geolocation) {
+    if ("geolocation" in navigator) {
         navigator.geolocation.getCurrentPosition(updateWeatherJSONP,showError);
 //        navigator.geolocation.getCurrentPosition(updateWeather,showError);
     } else {
         alert("Geolocation is not supported by this browser.");
     }
 }
-function updateWeatherImg(weather){
-        $("#weatherImg").attr("src",weatherIconList2[weather]);
+function getLocationJSONPFromIP() {
+    $.ajax({
+      url: "http://ip-api.com/json/",
+      dataType: 'jsonp',
+      success: updateWeatherJSONPFromIP,
+      error:function(){}
+    });
 }
 $(document).ready(function (){
-    getLocation();
-    $("#temperatureLi").click(function(){
-        swapUnit();
-    });
-    $("#refreshBtn").click(function(){
-        getLocation();
-    });
-//    var i =0;
-//    $("*").click(function(){
-//        i++;
-//        updateWeatherImg(2);
-////        alert(i);
-//    });
-    
-    
-    
     $("#weatherThumbnail").addClass("text-center");
     $("ul").addClass("list-group");
     $(".list-group > li").addClass("list-group-item");
     $(".list-group-item > h1").addClass("list-group-item-heading");
     $(".list-group-item > h4").addClass("list-group-item-text");
+    
+    
+    updateWeatherImg(5);//deafult value
+    getLocationJSONPFromIP();
+    
+    
+    $("#FBtn").click(function(){
+        isFahrenheit = 1;
+        updateTemperature();
+//        $("#FBtn").addClass("active");
+//        $("#CBtn").removeClass("active");
+    });
+    $("#CBtn").click(function(){
+        isFahrenheit = 0;
+        updateTemperature();
+//        $("#CBtn").addClass("active");
+//        $("#FBtn").removeClass("active");
+    });
+    $("#refreshBtn").click(function(){
+        getLocationJSONPFromIP();
+//        alert("test");
+        btnToggle(1,$("#refreshBtn"));
+//        alert("test");
+    });
+//    var i =0;
+////    $("*").click(function(){
+//    $("#temperatureLi").click(function(){
+//        i++;
+//        updateWeatherImg(i);
+////        alert(i);
+//    });
+    
+    
+    
 });
