@@ -82,5 +82,9 @@ and open the template in the editor.
                 </div>
             </div>
         </div>
+        <footer class="text-center">
+            Coded by <a href="https://github.com/QGfcc">QG</a>
+        </footer>
+
     </body>
 </html>

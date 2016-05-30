@@ -30,4 +30,10 @@ body {
     body #weatherImg {
       margin: 80px 0; } }
 
+footer {
+  color: gray; }
+  footer a {
+    text-decoration: underline;
+    color: inherit; }
+
 /*# sourceMappingURL=localWeather.css.map */
